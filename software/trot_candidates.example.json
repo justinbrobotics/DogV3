@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "notes": "Named D2 trot candidates for simulation screening before powered robot tests. Values override robot_config.json gait_seed only.",
+  "samples": 64,
+  "base_command": {
+    "vx": 0.0,
+    "vy": 1.0,
+    "wz": 0.0,
+    "body_z": 0.0
+  },
+  "candidates": [
+    {
+      "name": "bench-conservative",
+      "notes": "Slow, short-step starting point for first stand-trot tests.",
+      "gait_seed": {
+        "body_height": 160.0,
+        "step_length": 20.0,
+        "step_height": 30.0,
+        "cycle_period": 1.0,
+        "duty_factor": 0.7,
+        "stance_width_offset": 10.0,
+        "turn_gain": 0.3,
+        "swing_shape": "parabola"
+      }
+    },
+    {
+      "name": "bench-medium",
+      "notes": "Moderate step length after the conservative candidate is stable on the stand.",
+      "gait_seed": {
+        "body_height": 160.0,
+        "step_length": 30.0,
+        "step_height": 35.0,
+        "cycle_period": 0.8,
+        "duty_factor": 0.65,
+        "stance_width_offset": 10.0,
+        "turn_gain": 0.4,
+        "swing_shape": "parabola"
+      }
+    },
+    {
+      "name": "clearance-check",
+      "notes": "Higher swing clearance candidate for feet catching on the test stand or floor.",
+      "gait_seed": {
+        "body_height": 160.0,
+        "step_length": 25.0,
+        "step_height": 45.0,
+        "cycle_period": 0.9,
+        "duty_factor": 0.68,
+        "stance_width_offset": 12.0,
+        "turn_gain": 0.3,
+        "swing_shape": "sine"
+      }
+    }
+  ]
+}

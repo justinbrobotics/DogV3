@@ -1,0 +1,23 @@
+# DogV3 D2 operator server (PS4/cmd_vel intent -> onboard ESP32).
+#
+# Stopping or restarting this unit while the robot is ARMED torques the
+# servos off and the robot drops out of stand — stop it only with the robot
+# on its bench stand. Commissioning (dogv3-setup GUI) needs the ESP32
+# serial port free: sudo systemctl stop dogv3-operate first.
+[Unit]
+Description=DogV3 operator server (D2)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/dogv3
+ExecStart=/home/pi/dogv3-venv/bin/dogv3-operate --port-serial /dev/dogv3-esp32 --config /home/pi/dogv3/robot_config.json --host 0.0.0.0 --no-browser
+Restart=on-failure
+RestartSec=2
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

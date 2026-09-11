@@ -1,0 +1,20 @@
+# DogV3 RPLIDAR service (device /dev/rplidar via 99-dogv3.rules; port
+# from robot_config.json network.lidar_port). Installed disabled by
+# install.sh — enable with: sudo systemctl enable --now dogv3-lidar
+[Unit]
+Description=DogV3 lidar service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/dogv3
+ExecStart=/home/pi/dogv3-venv/bin/dogv3-pi-lidar --host 0.0.0.0 --config /home/pi/dogv3/robot_config.json
+Restart=on-failure
+RestartSec=2
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

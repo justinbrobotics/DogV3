@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "firmware_expected": "DOGV3-MUX v1.0",
+  "frame": {
+    "lateral": "X",
+    "longitudinal": "Y",
+    "up": "Z",
+    "forward_sign": "+Y"
+  },
+  "buses": {
+    "A": {
+      "role": "rear",
+      "esp32_uart": 1,
+      "rx": 16,
+      "tx": 17
+    },
+    "B": {
+      "role": "front",
+      "esp32_uart": 2,
+      "rx": 26,
+      "tx": 25
+    }
+  },
+  "links_mm": {
+    "L1_hip": 42.85,
+    "L2_femur": 115.0,
+    "L3_tibia": 140.25
+  },
+  "body_mm": {
+    "shoulder_lateral": 218.76,
+    "fore_aft": 276.83
+  },
+  "joint_order": [
+    "hip",
+    "femur",
+    "tibia"
+  ],
+  "legs": {
+    "FL": {
+      "bus": "B",
+      "side": "left",
+      "knee_sign": -1,
+      "ids": {
+        "hip": null,
+        "femur": null,
+        "tibia": null
+      }
+    },
+    "FR": {
+      "bus": "B",
+      "side": "right",
+      "knee_sign": 1,
+      "ids": {
+        "hip": null,
+        "femur": null,
+        "tibia": null
+      }
+    },
+    "BL": {
+      "bus": "A",
+      "side": "left",
+      "knee_sign": -1,
+      "ids": {
+        "hip": null,
+        "femur": null,
+        "tibia": null
+      }
+    },
+    "BR": {
+      "bus": "A",
+      "side": "right",
+      "knee_sign": 1,
+      "ids": {
+        "hip": null,
+        "femur": null,
+        "tibia": null
+      }
+    }
+  },
+  "gait_seed": {
+    "gait_type": "trot",
+    "body_height": 150.0,
+    "step_length": 40.0,
+    "step_height": 22.0,
+    "cycle_period": 0.8,
+    "duty_factor": 0.65,
+    "stance_width_offset": 34.0,
+    "body_sway_amp": 0.0,
+    "body_offset_x": 0.0,
+    "body_offset_y": -15.0,
+    "turn_gain": 0.5,
+    "max_fwd_speed": 80.0,
+    "max_yaw": 0.6,
+    "swing_shape": "cycloid",
+    "swing_retract": 1.0,
+    "stance_dip": 0.0,
+    "accel_limit": 4.3
+  },
+  "servos": {},
+  "gait_profiles": {},
+  "poses": {},
+  "tricks": {},
+  "network": {
+    "pi_host": "dogv3.local",
+    "token": ""
+  },
+  "peripherals": {
+    "camera": {
+      "enabled": false
+    },
+    "lidar": {
+      "enabled": false
+    },
+    "audio": {
+      "enabled": false
+    },
+    "imu": {
+      "enabled": false
+    }
+  }
+}

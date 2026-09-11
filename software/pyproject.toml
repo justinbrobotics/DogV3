@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dogv3"
+version = "1.0.0"
+description = "DogV3 commissioning and onboard robot controls"
+license = "PolyForm-Noncommercial-1.0.0 AND MIT"
+license-files = ["LICENSE.md", "THIRD_PARTY.md"]
+requires-python = ">=3.11"
+dependencies = ["pydantic==2.13.4", "pyserial==3.5", "fastapi==0.136.3", "uvicorn[standard]==0.40.0"]
+
+[project.optional-dependencies]
+commission = ["platformio==6.1.19", "pytest==9.0.3", "httpx==0.28.1"]
+pi = ["rplidar-roboticia>=0.9.5", "adafruit-circuitpython-bno08x>=1.2", "adafruit-blinka>=8.0"]
+
+[project.scripts]
+dogv3-verify-firmware = "dogv3.setup_program.verify_firmware:main"
+dogv3-setup = "dogv3.setup_program.server:main"
+dogv3-set-id = "dogv3.setup_program.set_servo_id:main"
+dogv3-bench-smoke = "dogv3.setup_program.bench_smoke:main"
+dogv3-flash-test = "dogv3.setup_program.flash_test:main"
+dogv3-operate = "dogv3.runtime.operator_server:main"
+dogv3-pi-camera = "dogv3.pi.camera:main"
+dogv3-pi-lidar = "dogv3.pi.lidar:main"
+dogv3-pi-audio = "dogv3.pi.audio:main"
+dogv3-pi-imu = "dogv3.pi.imu:main"
+dogv3-export-golden = "dogv3.kinematics.golden:main"
+dogv3-config-blob = "dogv3.config.blob:main"
+dogv3-config-inspect = "dogv3.config.report:main"
+dogv3-config-init = "dogv3.config.init_config:main"
+dogv3-preflight = "dogv3.setup_program.preflight:main"
+dogv3-readiness = "dogv3.setup_program.readiness:main"
+
+[tool.setuptools.packages.find]
+include = ["dogv3*"]
+
+[tool.setuptools.package-data]
+"dogv3.runtime" = ["static/*.js", "static/*.css"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

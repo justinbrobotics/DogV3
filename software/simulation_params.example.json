@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "robot_name": "DogV3",
+  "units": {
+    "length": "m",
+    "mass": "kg",
+    "inertia": "kg*m^2",
+    "torque": "N*m",
+    "voltage": "V"
+  },
+  "geometry_source": "robot_config.json links_mm/body_mm after physical measurement",
+  "recommended_engine": "MuJoCo",
+  "simulation_rate_hz": 1000,
+  "control_rate_hz": 60,
+  "masses_kg": {
+    "body": null,
+    "hip_link_each": null,
+    "femur_link_each": null,
+    "tibia_link_each": null,
+    "foot_each": null,
+    "battery": null
+  },
+  "link_inertia_kg_m2": {
+    "body": {
+      "ixx": null,
+      "iyy": null,
+      "izz": null
+    },
+    "hip_link": {
+      "ixx": null,
+      "iyy": null,
+      "izz": null
+    },
+    "femur_link": {
+      "ixx": null,
+      "iyy": null,
+      "izz": null
+    },
+    "tibia_link": {
+      "ixx": null,
+      "iyy": null,
+      "izz": null
+    }
+  },
+  "actuator": {
+    "model": "Feetech STS3215-C047",
+    "supply_voltage_v": 12.0,
+    "stall_torque_n_m": null,
+    "no_load_speed_rad_s": null,
+    "max_current_a": null,
+    "gear_backlash_rad": null,
+    "position_deadband_rad": null,
+    "source": "Measure on bench or cite datasheet before trusting dynamics"
+  },
+  "joint_friction": {
+    "hip_static_n_m": null,
+    "hip_viscous_n_m_s_per_rad": null,
+    "femur_static_n_m": null,
+    "femur_viscous_n_m_s_per_rad": null,
+    "tibia_static_n_m": null,
+    "tibia_viscous_n_m_s_per_rad": null
+  },
+  "foot_contact": {
+    "material": null,
+    "radius_m": null,
+    "static_friction": null,
+    "dynamic_friction": null,
+    "rolling_friction": null,
+    "restitution": null,
+    "source": "Measure on intended floor surface"
+  },
+  "battery": {
+    "nominal_voltage_v": 12.0,
+    "minimum_test_voltage_v": null,
+    "internal_resistance_ohm": null,
+    "sag_curve_source": "Measure pack voltage under servo load"
+  },
+  "validation_targets": {
+    "stand_current_a": null,
+    "single_leg_lift_current_a": null,
+    "stand_pose_joint_counts": null,
+    "slow_trot_video_reference": null
+  }
+}

@@ -1,0 +1,18 @@
+# DogV3 Pi camera service (picamera2; port from robot_config.json network.camera_port).
+[Unit]
+Description=DogV3 camera service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/dogv3
+ExecStart=/home/pi/dogv3-venv/bin/dogv3-pi-camera --host 0.0.0.0 --config /home/pi/dogv3/robot_config.json
+Restart=on-failure
+RestartSec=2
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

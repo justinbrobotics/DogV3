@@ -1,0 +1,20 @@
+# DogV3 audio/TTS service (ALSA + espeak-ng/piper; port from
+# robot_config.json network.audio_port). Installed disabled by install.sh —
+# enable with: sudo systemctl enable --now dogv3-audio
+[Unit]
+Description=DogV3 audio service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/dogv3
+ExecStart=/home/pi/dogv3-venv/bin/dogv3-pi-audio --host 0.0.0.0 --config /home/pi/dogv3/robot_config.json
+Restart=on-failure
+RestartSec=2
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
